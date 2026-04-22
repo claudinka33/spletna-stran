@@ -58,7 +58,12 @@
     font-family: 'Instrument Serif', serif;
     font-size: 28px; font-style: italic;
     letter-spacing: -0.02em;
+    text-decoration: none;
+    color: var(--ink);
+    cursor: pointer;
+    transition: opacity 0.2s;
   }
+  .logo:hover { opacity: 0.8; }
   .logo span { color: var(--cyan); }
 
   .nav-links { display: flex; gap: 32px; align-items: center; }
@@ -464,7 +469,7 @@
   }
   .web-refs-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
   .web-ref-card {
@@ -876,7 +881,7 @@
     .video-grid { grid-template-columns: repeat(2, 1fr); }
     .ai-image-grid { grid-template-columns: repeat(3, 1fr); }
     .ai-video-grid { grid-template-columns: repeat(2, 1fr); }
-    .web-refs-grid { grid-template-columns: 1fr; }
+    .web-refs-grid { grid-template-columns: repeat(2, 1fr); }
     .nav-links { display: none; }
   }
   @media (max-width: 768px) {
@@ -885,19 +890,43 @@
     .philosophy { padding: 80px 0; }
     .cta-final { padding: 80px 0; }
     .contact-grid { grid-template-columns: 1fr; }
+    .web-refs-grid { grid-template-columns: 1fr; }
     nav .cta-mini { display: none; }
     .hero { padding: 140px 0 80px; }
     .video-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
     .ai-image-grid { grid-template-columns: repeat(2, 1fr); }
     .ai-video-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .countdown-float {
-      bottom: 16px; right: 16px; left: 16px;
+      bottom: 12px; right: 12px; left: auto;
       min-width: 0;
-      padding: 16px 18px;
+      max-width: 220px;
+      padding: 12px 14px;
+      border-radius: 16px;
     }
-    .countdown-discount { font-size: 18px; }
-    .countdown-timer { font-size: 16px; }
-    .countdown-timer .digit { padding: 5px 8px; min-width: 34px; }
+    .countdown-close {
+      top: 6px; right: 8px;
+      width: 18px; height: 18px;
+      font-size: 14px;
+    }
+    .countdown-label {
+      font-size: 9px;
+      margin-bottom: 5px;
+    }
+    .countdown-discount {
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+    .countdown-timer {
+      font-size: 13px;
+      gap: 3px;
+      margin-bottom: 6px;
+    }
+    .countdown-timer .digit {
+      padding: 4px 6px;
+      min-width: 28px;
+      border-radius: 6px;
+    }
+    .countdown-cta { font-size: 10px; }
   }
 
   .fade-up {
@@ -929,7 +958,7 @@
 
 <nav>
   <div class="container">
-    <div class="logo">Claudia<span>Studio</span></div>
+    <a href="#top" class="logo" onclick="event.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'});">Claudia<span>Studio</span></a>
     <div class="nav-links">
       <a href="#o-meni">O meni</a>
       <a href="#storitve">Storitve</a>
@@ -1052,6 +1081,12 @@
         <div class="web-ref-num">04 · Pritrdilna tehnika</div>
         <div class="web-ref-url">assystem.si</div>
         <div class="web-ref-desc">B2B stran za podjetje s pritrdilno tehniko in lastno proizvodnjo.</div>
+        <div class="web-ref-arrow">↗</div>
+      </a>
+      <a href="https://69slam.si" target="_blank" rel="noopener" class="web-ref-card">
+        <div class="web-ref-num">05 · Spletna trgovina</div>
+        <div class="web-ref-url">69slam.si</div>
+        <div class="web-ref-desc">E-commerce stran za spodnje perilo in kopalke.</div>
         <div class="web-ref-arrow">↗</div>
       </a>
     </div>
