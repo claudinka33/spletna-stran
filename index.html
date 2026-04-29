@@ -152,6 +152,44 @@
   }
   .nav-links a:hover { color: var(--ink); }
 
+  /* ——— LANGUAGE SWITCHER ——— */
+  .lang-switcher {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    margin-right: 8px;
+    padding: 4px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+  }
+  .lang-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 10px;
+    border-radius: 100px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-dim);
+    text-decoration: none;
+    transition: all 0.2s;
+    letter-spacing: 0.05em;
+  }
+  .lang-link:hover {
+    color: var(--ink);
+    background: rgba(255,255,255,0.05);
+  }
+  .lang-link.active {
+    background: var(--cyan);
+    color: var(--bg);
+  }
+  .lang-flag {
+    font-size: 14px;
+    line-height: 1;
+  }
+
   nav .cta-mini {
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px; color: var(--ink);
@@ -169,7 +207,7 @@
   /* ——— FLOATING COUNTDOWN BUBBLE ——— */
   .countdown-float {
     position: fixed;
-    bottom: 24px; right: 24px;
+    bottom: 24px; left: 24px;
     z-index: 60;
     background: var(--bg);
     border: 2px solid var(--cyan);
@@ -1100,6 +1138,16 @@
     .ai-video-grid { grid-template-columns: repeat(2, 1fr); }
     .web-refs-grid { grid-template-columns: repeat(2, 1fr); }
     .nav-links { display: none; }
+    .lang-switcher {
+      gap: 2px;
+      padding: 3px;
+      margin-right: 0;
+    }
+    .lang-link {
+      padding: 5px 8px;
+      font-size: 10px;
+    }
+    .lang-flag { font-size: 12px; }
   }
   @media (max-width: 768px) {
     .container { padding: 0 20px; }
@@ -1113,12 +1161,23 @@
     .video-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
     .ai-image-grid { grid-template-columns: repeat(2, 1fr); }
     .ai-video-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    /* Manjši stats na mobilnih napravah da gredo v eno vrstico */
+    .video-stats { font-size: 10px !important; gap: 4px; }
+    .video-views, .video-likes {
+      padding: 4px 7px !important;
+      font-size: 10px !important;
+    }
+    .video-card .video-overlay {
+      padding: 12px 12px 18px !important;
+    }
     .review-card { width: 280px; padding: 22px; }
     .reviews { padding: 80px 0; }
     .reviews-stats { gap: 16px; flex-direction: column; }
     .reviews-fade { width: 60px; }
     .countdown-float {
-      bottom: 12px; right: 12px; left: auto;
+      bottom: 12px !important;
+      left: 12px !important;
+      right: auto !important;
       min-width: 0;
       max-width: 220px;
       padding: 12px 14px;
@@ -1152,6 +1211,164 @@
   .fade-up.d2 { animation-delay: 0.25s; }
   .fade-up.d3 { animation-delay: 0.4s; }
   @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+  /* ——— LEBDEČI EFEKTI (subtilno gibanje gor-dol) ——— */
+  
+  @keyframes floatGentle {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+  
+  @keyframes floatGentleDelay1 {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+  
+  @keyframes floatGentleDelay2 {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+  }
+  
+  @keyframes floatGentleDelay3 {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-7px); }
+  }
+  
+  /* Hero serija — različne hitrosti za naravni občutek */
+  /* Float animacija se začne po fade-up entrance (~1.5s) */
+  .hero h1 {
+    animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s forwards, floatGentle 6s ease-in-out 1.5s infinite;
+  }
+  .hero .hero-services {
+    animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.25s forwards, floatGentleDelay1 7s ease-in-out 2s infinite;
+  }
+  .hero .hero-sub {
+    animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.25s forwards, floatGentleDelay2 8s ease-in-out 2.5s infinite;
+  }
+  .hero .cta-row {
+    animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s forwards, floatGentleDelay3 7.5s ease-in-out 1.8s infinite;
+  }
+  
+  /* About section image — lebdi */
+  .about-img-wrap {
+    animation: floatGentle 8s ease-in-out infinite;
+  }
+  
+  /* Paketi — vsak svoja hitrost */
+  .packages .package:nth-child(1) {
+    animation: floatGentle 7s ease-in-out infinite;
+    animation-delay: 0s;
+  }
+  .packages .package:nth-child(2) {
+    animation: floatGentleDelay1 8s ease-in-out infinite;
+    animation-delay: 0.8s;
+  }
+  .packages .package:nth-child(3) {
+    animation: floatGentleDelay2 7.5s ease-in-out infinite;
+    animation-delay: 0.4s;
+  }
+  
+  /* Video kartice — lebdijo */
+  .video-grid .video-card:nth-child(odd) {
+    animation: floatGentle 7s ease-in-out infinite;
+  }
+  .video-grid .video-card:nth-child(even) {
+    animation: floatGentleDelay2 8s ease-in-out infinite;
+    animation-delay: 0.5s;
+  }
+  
+  /* AI slike */
+  .ai-image-grid .ai-image-card:nth-child(3n+1) {
+    animation: floatGentle 7s ease-in-out infinite;
+  }
+  .ai-image-grid .ai-image-card:nth-child(3n+2) {
+    animation: floatGentleDelay1 8s ease-in-out infinite;
+    animation-delay: 0.4s;
+  }
+  .ai-image-grid .ai-image-card:nth-child(3n+3) {
+    animation: floatGentleDelay2 7.5s ease-in-out infinite;
+    animation-delay: 0.8s;
+  }
+  
+  /* AI videi */
+  .ai-video-grid .ai-video-card:nth-child(odd) {
+    animation: floatGentle 7s ease-in-out infinite;
+  }
+  .ai-video-grid .ai-video-card:nth-child(even) {
+    animation: floatGentleDelay3 8s ease-in-out infinite;
+    animation-delay: 0.5s;
+  }
+  
+  /* Web reference kartice */
+  .web-refs-grid .web-ref-card:nth-child(odd) {
+    animation: floatGentle 7s ease-in-out infinite;
+  }
+  .web-refs-grid .web-ref-card:nth-child(even) {
+    animation: floatGentleDelay2 8s ease-in-out infinite;
+    animation-delay: 0.6s;
+  }
+  
+  /* Philosophy quote */
+  .philosophy-text {
+    animation: floatGentle 9s ease-in-out infinite;
+  }
+  
+  /* CTA final h2 in gumbi */
+  .cta-final h2 {
+    animation: floatGentleDelay1 8s ease-in-out infinite;
+  }
+  .cta-final .cta-row {
+    animation: floatGentleDelay2 7s ease-in-out infinite;
+    animation-delay: 0.4s;
+  }
+  
+  /* Hover override — ko gre miška na kartico, prevzame hover efekt nad lebdečim */
+  .package:hover,
+  .video-card:hover,
+  .ai-image-card:hover,
+  .ai-video-card:hover,
+  .web-ref-card:hover {
+    animation-play-state: paused;
+  }
+  
+  /* Na mobilnih napravah lahko zmanjšamo intenziteto da ne moti pri scrollanju */
+  @media (max-width: 768px) {
+    @keyframes floatGentle {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-4px); }
+    }
+    @keyframes floatGentleDelay1 {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    @keyframes floatGentleDelay2 {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-3px); }
+    }
+    @keyframes floatGentleDelay3 {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-4px); }
+    }
+  }
+  
+  /* Spoštuj uporabnikov reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .hero h1,
+    .hero .hero-services,
+    .hero .hero-sub,
+    .hero .cta-row,
+    .about-img-wrap,
+    .package,
+    .video-card,
+    .ai-image-card,
+    .ai-video-card,
+    .web-ref-card,
+    .philosophy-text,
+    .cta-final h2,
+    .cta-final .cta-row {
+      animation: none !important;
+    }
+  }
 
   /* ——— CURSOR SPOTLIGHT (sledi miški) ——— */
   body {
@@ -1458,6 +1675,11 @@
       <a href="#reference-web">Reference</a>
       <a href="#mnenja">Mnenja</a>
       <a href="#kontakt">Kontakt</a>
+    </div>
+    <div class="lang-switcher">
+      <a href="/" class="lang-link active"><span class="lang-flag">🇸🇮</span>SI</a>
+      <a href="/en/" class="lang-link"><span class="lang-flag">🇬🇧</span>EN</a>
+      <a href="/hr/" class="lang-link"><span class="lang-flag">🇭🇷</span>HR</a>
     </div>
     <a href="#kontakt" class="cta-mini">Rezerviraj klic →</a>
   </div>
@@ -2270,21 +2492,10 @@
 
     <div class="cta-row">
       <a href="mailto:claudinka33@gmail.com?subject=Rezervacija%20klica%20-%20Claudia%20Studio" class="btn-primary">
-        Pošlji mi email
+        Pošlji mail
         <span class="arrow">→</span>
       </a>
-      <a href="tel:+38640993317" class="btn-secondary">📞 Ali pokliči direktno</a>
-    </div>
-
-    <div class="contact-grid">
-      <a href="mailto:claudinka33@gmail.com" class="contact-card">
-        <div class="contact-label">✉︎ Email</div>
-        <div class="contact-value">claudinka33@gmail.com</div>
-      </a>
-      <a href="tel:+38640993317" class="contact-card">
-        <div class="contact-label">☎ Telefon</div>
-        <div class="contact-value">+386 40 993 317</div>
-      </a>
+      <a href="tel:+38640993317" class="btn-secondary">Pokliči</a>
     </div>
   </div>
 </section>
@@ -2412,8 +2623,9 @@
         } else if (scanProgress <= 0) {
           scanProgress = 0;
           direction = 1;
-          // If returning to start and not hovering, stop
-          if (!card.matches(':hover')) {
+          // If returning to start and not hovering (and not on mobile auto-mode), stop
+          const isTouchDevice = window.matchMedia('(hover: none)').matches;
+          if (!card.matches(':hover') && !card.dataset.autoScan) {
             isAnimating = false;
             card.classList.remove('scanning');
             stopAsciiRefresh();
@@ -2447,6 +2659,29 @@
       card.addEventListener('mouseenter', startScan);
       // Don't stop on mouseleave — let it complete the cycle for smoothness
       
+      // ——— AVTOMATSKO SPROŽANJE SKENERJA NA MOBILNIH NAPRAVAH ———
+      // Ko stranka scrolla do kartice na telefonu, se efekt sam sproži
+      const isTouchDevice = window.matchMedia('(hover: none)').matches;
+      if (isTouchDevice) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // Card je viden — sproži skener (loop continuously)
+              card.dataset.autoScan = 'true';
+              startScan();
+            } else {
+              // Card ni več viden — ustavi
+              delete card.dataset.autoScan;
+            }
+          });
+        }, {
+          threshold: 0.5, // Sproži ko je vsaj 50% kartice vidno
+          rootMargin: '0px'
+        });
+        
+        observer.observe(card);
+      }
+      
       // Window resize - update ASCII size
       window.addEventListener('resize', () => {
         if (!isAnimating) updateAsciiSize();
@@ -2478,20 +2713,6 @@
     }
   })();
 </script>
-
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/69f262113aaa4c1c3adc1a19/1jndcu509';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
 
 </body>
 </html>
