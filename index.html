@@ -38,7 +38,6 @@
   }
 
   /* ——— ANIMIRANO OZADJE ——— */
-  /* Plast 1: Subtilna mreža (grid pattern) */
   body::before {
     content: '';
     position: fixed;
@@ -53,7 +52,6 @@
     -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 30%, transparent 80%);
   }
 
-  /* Plast 2: Aurora gradient (premika se počasi) */
   body::after {
     content: '';
     position: fixed;
@@ -74,7 +72,6 @@
     100% { transform: translate(-5%, 5%) rotate(2deg); }
   }
 
-  /* Plast 3: Zrnata tekstura preko vsega (na vrhu) */
   .grain-overlay {
     position: fixed;
     inset: 0;
@@ -84,7 +81,6 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  /* Plast 4: Star field — utripajoče zvezdice */
   .stars {
     position: fixed;
     inset: 0;
@@ -117,7 +113,6 @@
     100% { opacity: 0.5; }
   }
 
-  /* Vse vsebinske sekcije gredo nad ozadje */
   nav, section, footer, .marquee, .countdown-float {
     position: relative;
     z-index: 1;
@@ -152,7 +147,6 @@
   }
   .nav-links a:hover { color: var(--ink); }
 
-  /* ——— LANGUAGE SWITCHER ——— */
   .lang-switcher {
     display: flex;
     gap: 4px;
@@ -204,7 +198,6 @@
     border-color: var(--cyan);
   }
 
-  /* ——— FLOATING COUNTDOWN BUBBLE ——— */
   .countdown-float {
     position: fixed;
     bottom: 24px; left: 24px;
@@ -352,6 +345,43 @@
     margin-bottom: 40px; max-width: 1100px;
   }
   h1 em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: var(--cyan); }
+
+  /* ——— OBKROŽENA BESEDA "ZATE" ——— */
+  .word-circle {
+    position: relative;
+    display: inline-block;
+    padding: 0 0.15em;
+    color: var(--cyan);
+  }
+  .word-circle-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 145%;
+    height: 175%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    overflow: visible;
+    z-index: 1;
+  }
+  .word-circle-svg path {
+    fill: none;
+    stroke: var(--cyan);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1400;
+    stroke-dashoffset: 1400;
+    filter: drop-shadow(0 0 8px rgba(37, 244, 238, 0.5));
+    animation: drawCircle 2.2s cubic-bezier(0.43, 0.13, 0.23, 0.96) 1.4s forwards;
+  }
+  @keyframes drawCircle {
+    to { stroke-dashoffset: 0; }
+  }
+  .word-circle > span {
+    position: relative;
+    z-index: 2;
+  }
 
   .hero-services {
     display: flex; gap: 24px; flex-wrap: wrap;
@@ -626,7 +656,6 @@
     color: var(--cyan);
   }
 
-  /* ——— WEB REFS PREVIEW IMAGE WITH SCANNER EFFECT ——— */
   .web-ref-preview {
     position: relative;
     width: 100%;
@@ -673,7 +702,6 @@
     user-select: none;
   }
   
-  /* Scanner line — vijolično-cyan navpičnica ki se premika */
   .web-ref-scanner {
     position: absolute;
     top: -2px; bottom: -2px;
@@ -701,7 +729,6 @@
     opacity: 1;
   }
   
-  /* Particles ki "letijo" iz skenerja */
   .web-ref-scanner::before,
   .web-ref-scanner::after {
     content: '';
@@ -733,7 +760,6 @@
     50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
   }
   
-  /* ASCII glitch animacija */
   @keyframes asciiGlitch {
     0%, 100% { opacity: 0.55; transform: translateX(0); }
     25% { opacity: 0.7; transform: translateX(-1px); }
@@ -806,7 +832,6 @@
     margin-right: 6px;
   }
 
-  /* ——— AI VIDEOS ——— */
   .ai-video-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -957,7 +982,6 @@
   }
   .package-price-gap { margin-bottom: 28px; }
 
-  /* ——— INQUIRY CTA (replaces price) — clean, no border ——— */
   .package-inquiry {
     margin-bottom: 28px;
     padding: 16px 0 8px;
@@ -1161,7 +1185,6 @@
     .video-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
     .ai-image-grid { grid-template-columns: repeat(2, 1fr); }
     .ai-video-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    /* Manjši stats na mobilnih napravah da gredo v eno vrstico */
     .video-stats { font-size: 10px !important; gap: 4px; }
     .video-views, .video-likes {
       padding: 4px 7px !important;
@@ -1201,6 +1224,10 @@
       margin-bottom: 6px;
     }
     .countdown-cta { font-size: 10px; }
+    /* Krog na mobilnih malo manjši stroke */
+    .word-circle-svg path {
+      stroke-width: 4;
+    }
   }
 
   .fade-up {
@@ -1212,8 +1239,7 @@
   .fade-up.d3 { animation-delay: 0.4s; }
   @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-  /* ——— LEBDEČI EFEKTI (subtilno gibanje gor-dol) ——— */
-  
+  /* ——— LEBDEČI EFEKTI ——— */
   @keyframes floatGentle {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-6px); }
@@ -1234,8 +1260,6 @@
     50% { transform: translateY(-7px); }
   }
   
-  /* Hero serija — različne hitrosti za naravni občutek */
-  /* Float animacija se začne po fade-up entrance (~1.5s) */
   .hero h1 {
     animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s forwards, floatGentle 6s ease-in-out 1.5s infinite;
   }
@@ -1249,12 +1273,10 @@
     animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s forwards, floatGentleDelay3 7.5s ease-in-out 1.8s infinite;
   }
   
-  /* About section image — lebdi */
   .about-img-wrap {
     animation: floatGentle 8s ease-in-out infinite;
   }
   
-  /* Paketi — vsak svoja hitrost */
   .packages .package:nth-child(1) {
     animation: floatGentle 7s ease-in-out infinite;
     animation-delay: 0s;
@@ -1268,7 +1290,6 @@
     animation-delay: 0.4s;
   }
   
-  /* Video kartice — lebdijo */
   .video-grid .video-card:nth-child(odd) {
     animation: floatGentle 7s ease-in-out infinite;
   }
@@ -1277,7 +1298,6 @@
     animation-delay: 0.5s;
   }
   
-  /* AI slike */
   .ai-image-grid .ai-image-card:nth-child(3n+1) {
     animation: floatGentle 7s ease-in-out infinite;
   }
@@ -1290,7 +1310,6 @@
     animation-delay: 0.8s;
   }
   
-  /* AI videi */
   .ai-video-grid .ai-video-card:nth-child(odd) {
     animation: floatGentle 7s ease-in-out infinite;
   }
@@ -1299,7 +1318,6 @@
     animation-delay: 0.5s;
   }
   
-  /* Web reference kartice */
   .web-refs-grid .web-ref-card:nth-child(odd) {
     animation: floatGentle 7s ease-in-out infinite;
   }
@@ -1308,12 +1326,10 @@
     animation-delay: 0.6s;
   }
   
-  /* Philosophy quote */
   .philosophy-text {
     animation: floatGentle 9s ease-in-out infinite;
   }
   
-  /* CTA final h2 in gumbi */
   .cta-final h2 {
     animation: floatGentleDelay1 8s ease-in-out infinite;
   }
@@ -1322,7 +1338,6 @@
     animation-delay: 0.4s;
   }
   
-  /* Hover override — ko gre miška na kartico, prevzame hover efekt nad lebdečim */
   .package:hover,
   .video-card:hover,
   .ai-image-card:hover,
@@ -1331,7 +1346,6 @@
     animation-play-state: paused;
   }
   
-  /* Na mobilnih napravah lahko zmanjšamo intenziteto da ne moti pri scrollanju */
   @media (max-width: 768px) {
     @keyframes floatGentle {
       0%, 100% { transform: translateY(0px); }
@@ -1351,7 +1365,6 @@
     }
   }
   
-  /* Spoštuj uporabnikov reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
     .hero h1,
     .hero .hero-services,
@@ -1368,9 +1381,13 @@
     .cta-final .cta-row {
       animation: none !important;
     }
+    .word-circle-svg path {
+      animation: none !important;
+      stroke-dashoffset: 0 !important;
+    }
   }
 
-  /* ——— CURSOR SPOTLIGHT (sledi miški) ——— */
+  /* ——— CURSOR SPOTLIGHT ——— */
   body {
     --mx: 50vw;
     --my: 50vh;
@@ -1449,14 +1466,7 @@
     letter-spacing: 2px;
     line-height: 1;
   }
-  .reviews-stars-row .half {
-    background: linear-gradient(90deg, #FFD700 50%, rgba(255, 215, 0, 0.25) 50%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
 
-  /* Marquee tracks - 2 vrstici, gibata se v nasprotni smeri */
   .reviews-tracks {
     display: flex;
     flex-direction: column;
@@ -1512,9 +1522,6 @@
     letter-spacing: 3px;
     line-height: 1;
   }
-  .review-stars .dim {
-    color: rgba(255, 215, 0, 0.25);
-  }
   .review-text {
     font-size: 15px;
     line-height: 1.6;
@@ -1523,7 +1530,6 @@
   .review-text::before { content: '"'; }
   .review-text::after { content: '"'; }
 
-  /* Edge gradient - postopno fade levo in desno */
   .reviews-fade {
     position: absolute;
     top: 0;
@@ -1541,7 +1547,7 @@
     background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
   }
 
-  /* ——— GLOW BORDER za pakete in kartice ——— */
+  /* ——— GLOW BORDER ——— */
   .package,
   .web-ref-card,
   .ai-image-card,
@@ -1579,7 +1585,7 @@
     transition: opacity 0.3s;
   }
 
-  /* ——— iPhone frame za video kartice in AI slike ——— */
+  /* ——— iPhone frame ——— */
   .video-card,
   .ai-video-card,
   .ai-image-card {
@@ -1594,7 +1600,6 @@
     overflow: visible;
   }
 
-  /* Notranji content (video / slika) */
   .video-card video,
   .ai-video-card video,
   .ai-image-card img {
@@ -1605,7 +1610,6 @@
     object-fit: cover;
   }
 
-  /* Notch — Dynamic Island (črni "tablet" na vrhu) */
   .video-card::before,
   .ai-video-card::before,
   .ai-image-card::before {
@@ -1625,7 +1629,6 @@
     box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
   }
 
-  /* Glow ::after — prilagojen iphone obliki */
   .video-card::after,
   .ai-video-card::after,
   .ai-image-card::after {
@@ -1634,19 +1637,12 @@
     padding: 2px;
   }
 
-  /* Video overlay znotraj iphone frame-a */
   .video-card .video-overlay {
     border-radius: 28px;
     inset: 10px;
     padding: 14px 18px 22px;
   }
 
-  /* Video stats prilagoditev */
-  .video-card .video-stats {
-    /* obstaja — naj se prikaže pravilno znotraj frame-a */
-  }
-
-  /* AI značke — pravilno pozicionirane znotraj iphone okvirja */
   .ai-image-badge,
   .ai-video-badge {
     top: 22px !important;
@@ -1657,16 +1653,10 @@
 </head>
 <body>
 
-<!-- ——— STARS (utripajoče zvezdice v ozadju) ——— -->
 <div class="stars"></div>
-
-<!-- ——— GRAIN OVERLAY (zrnata tekstura preko vsega) ——— -->
 <div class="grain-overlay"></div>
-
-<!-- ——— CURSOR SPOTLIGHT (sledi miški) ——— -->
 <div class="cursor-spotlight" id="cursorSpotlight"></div>
 
-<!-- ——— FLOATING CTA BUBBLE ——— -->
 <a href="mailto:claudinka33@gmail.com?subject=Rezervacija%20brezplačnega%20klica&body=Pozdravljeni%20Claudia%2C%0A%0AZanima%20me%20brezplačen%20klic%20za%20pogovor%20o%20mojem%20projektu.%0A%0AHvala%20in%20lep%20pozdrav%21" class="countdown-float" id="countdownBubble">
   <button class="countdown-close" onclick="event.preventDefault(); event.stopPropagation(); document.getElementById('countdownBubble').style.display='none';" aria-label="Zapri">×</button>
   <div class="countdown-label">Posvet brez obveznosti</div>
@@ -1703,7 +1693,16 @@
 
     <h1 class="fade-up d1">
       Tvoj brand <em>online</em>.<br>
-      Zgrajen da dela zate.
+      Zgrajen da dela <span class="word-circle" aria-label="zate">
+        <svg class="word-circle-svg" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M 235 25
+                   C 295 50, 290 110, 200 130
+                   C 90 145, 25 120, 20 75
+                   C 18 30, 80 18, 160 18
+                   C 215 18, 245 28, 248 38" />
+        </svg>
+        <span>zate</span>
+      </span>.
     </h1>
 
     <div class="hero-services fade-up d2">
@@ -1772,7 +1771,6 @@
   </div>
 </section>
 
-<!-- ——— WEB REFERENCES ——— -->
 <section class="web-refs" id="reference-web">
   <div class="container">
     <div class="web-refs-head">
@@ -1843,7 +1841,6 @@
   </div>
 </section>
 
-<!-- ——— TIKTOK VIDEOS ——— -->
 <section class="video-feed" id="video">
   <div class="container">
     <div class="video-feed-head">
@@ -1920,7 +1917,6 @@
   </div>
 </section>
 
-<!-- ——— AI IMAGES GALLERY ——— -->
 <section class="ai-gallery">
   <div class="container">
     <div class="ai-gallery-head">
@@ -1994,7 +1990,6 @@
   </div>
 </section>
 
-<!-- ——— AI VIDEOS ——— -->
 <section class="ai-gallery">
   <div class="container">
     <div class="ai-gallery-head">
@@ -2242,7 +2237,6 @@
   </div>
 </section>
 
-<!-- ——— REVIEWS ——— -->
 <section class="reviews" id="mnenja">
   <div class="container">
     <div class="reviews-head">
@@ -2250,14 +2244,14 @@
       <h2>Kaj o meni pravijo <em>moje stranke</em>.</h2>
       <div class="reviews-stats">
         <div class="reviews-stat">
-          <div class="reviews-stat-num">4.7</div>
+          <div class="reviews-stat-num">5.0</div>
           <div>
-            <div class="reviews-stars-row">★★★★<span class="half">★</span></div>
+            <div class="reviews-stars-row">★★★★★</div>
             <div class="reviews-stat-label">Povprečna ocena</div>
           </div>
         </div>
         <div class="reviews-stat">
-          <div class="reviews-stat-num">94%</div>
+          <div class="reviews-stat-num">100%</div>
           <div class="reviews-stat-label">Priporočilo<br>strank</div>
         </div>
       </div>
@@ -2268,323 +2262,171 @@
   <div class="reviews-fade reviews-fade-right"></div>
 
   <div class="reviews-tracks">
-    <!-- Vrstica 1 — gibanje levo -->
     <div class="reviews-track reviews-track-1">
-      <!-- Set 1 -->
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Stran nam je naredila točno tako kot smo si želeli, mogoče še boljše. Že prvi mesec smo dobili nekaj novih strank in to brez oglasov, kar je mene osebno presenetilo.</div>
+        <div class="review-text">Claudia je naredila točno to kar sem si predstavljala — pravzaprav še bolje. Stran nam že prvi mesec prinaša nove povpraševanja in to brez oglasov.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Top, samo tok. Posnetki za TikTok zadel točno tisto kar sm rabla. Sodelujem še naprej.</div>
+        <div class="review-text">Posnetki za TikTok so zadeli točno tisto kar sem hotela pokazat. Profesionalno, sproščeno in v stilu mojega brenda. Nadaljujem z mesečnim sodelovanjem.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">AI slike za katalog v 2 dneh — v studio bi mi vzelo ene 3 tedne. Iskreno, sploh nebi rekla da je to AI, tok dobro je.</div>
+        <div class="review-text">AI slike za naš katalog so bile narejene v dveh dneh — v studiju bi mi vzelo cele tedne. Kvaliteta zares ne bi rekel da je AI.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Stran zgleda super, hitra je in vse dela. Mogoče malo več komunikacije med projektom, sicer pa zelo zadovoljen. Priporočam.</div>
+        <div class="review-text">Resnično prisluhne kaj rabiš in to upošteva. Nismo imeli niti enega zapleta. Stran zgleda super, deluje hitro in je preprosta za upravljanje.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Naša instagram statistika je v enem mescu skočila ko še nikoli prej. Videji se prov sami od sebe vrtijo, ne vem kaj dela ona ampak deluje 😅</div>
+        <div class="review-text">Naša Instagram statistika je v enem mesecu skočila kot ne še nikoli. Videji ki jih Claudia naredi se preprosto vrtijo sami od sebe.</div>
       </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★<span class="dim">★★</span></div>
-        <div class="review-text">Stran ok, ampak na popravke sem čakala par dni. Drugače pa v redu.</div>
-      </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Cena je poštena, na trgu sem videla ponudbe za dvojno več za pol manj kvalitete. 100% priporočam.</div>
+        <div class="review-text">Cena je popolnoma poštena za to kar dobiš. Na trgu sem videla ponudbe z dvojno ceno za polovico kvalitete. Priporočam stoodstotno.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Naročili AI vizuale za novo kolekcijo — vse pripravljeno v 48h. Stranke sploh niso opazil da niso pravi posnetki, kar je za nas zmaga.</div>
+        <div class="review-text">Naročili smo AI vizuale za novo kolekcijo — vse pripravljeno v 48 urah. Naše stranke sploh niso opazile da niso pravi posnetki.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Sodelujemo že drugi mesec za video in res nimam pripomb. Vsak posnetek je presežek, hvala Claudia 🙌</div>
+        <div class="review-text">Vse od prvega klica do objave strani je teklo gladko. Brez zamud, brez "pozabil sem", brez izgovorov. Komunikacija na 5+.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Claudia razume razliko med "lepa stran" in "stran ki prodaja". Naša prodaja se je v dveh mesecih po prenovi povečala za 40%.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Sodelujemo že drugi mesec za video vsebine in ne razmišljam o menjavi. Vsak posnetek je presežek.</div>
       </div>
 
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Pričakovala sem mogoče malo bolj hitro izdelavo, ampak rezultat je super, tako da ne morem se pritoževat. Dober vtis pustila.</div>
+        <div class="review-text">Claudia je naredila točno to kar sem si predstavljala — pravzaprav še bolje. Stran nam že prvi mesec prinaša nove povpraševanja in to brez oglasov.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Claudia razume razliko med "lepa stran" in "stran ki prodaja". Naša prodaja se je v 2 mesecih po prenovi dvignla za skoraj 40%. Številke ne lažejo.</div>
+        <div class="review-text">Posnetki za TikTok so zadeli točno tisto kar sem hotela pokazat. Profesionalno, sproščeno in v stilu mojega brenda. Nadaljujem z mesečnim sodelovanjem.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Tehnično nism doma in vse mi je razložila tako da sem dejansko razumela. Ne rabim se s tem ukvarjat, kar je tist kar sm hotela.</div>
+        <div class="review-text">AI slike za naš katalog so bile narejene v dveh dneh — v studiju bi mi vzelo cele tedne. Kvaliteta zares ne bi rekel da je AI.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Stran in social media na enem mestu — končno nekdo ki to obvlada oboje. Hvaležen sem za sodelovanje.</div>
+        <div class="review-text">Resnično prisluhne kaj rabiš in to upošteva. Nismo imeli niti enega zapleta. Stran zgleda super, deluje hitro in je preprosta za upravljanje.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Hitra, profi in zna prisluhniti. Nimam kaj dodat. 5 zvezdic.</div>
+        <div class="review-text">Naša Instagram statistika je v enem mesecu skočila kot ne še nikoli. Videji ki jih Claudia naredi se preprosto vrtijo sami od sebe.</div>
       </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★<span class="dim">★★</span></div>
-        <div class="review-text">Cena na koncu malo višja kot dogovor. Delo solidno, ampak naslednjič bi raje jasen znesek vnaprej.</div>
-      </div>
-
-      <!-- Set 2 (duplicate for seamless loop) -->
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Stran nam je naredila točno tako kot smo si želeli, mogoče še boljše. Že prvi mesec smo dobili nekaj novih strank in to brez oglasov, kar je mene osebno presenetilo.</div>
+        <div class="review-text">Cena je popolnoma poštena za to kar dobiš. Na trgu sem videla ponudbe z dvojno ceno za polovico kvalitete. Priporočam stoodstotno.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Top, samo tok. Posnetki za TikTok zadel točno tisto kar sm rabla. Sodelujem še naprej.</div>
+        <div class="review-text">Naročili smo AI vizuale za novo kolekcijo — vse pripravljeno v 48 urah. Naše stranke sploh niso opazile da niso pravi posnetki.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">AI slike za katalog v 2 dneh — v studio bi mi vzelo ene 3 tedne. Iskreno, sploh nebi rekla da je to AI, tok dobro je.</div>
+        <div class="review-text">Vse od prvega klica do objave strani je teklo gladko. Brez zamud, brez "pozabil sem", brez izgovorov. Komunikacija na 5+.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Stran zgleda super, hitra je in vse dela. Mogoče malo več komunikacije med projektom, sicer pa zelo zadovoljen. Priporočam.</div>
+        <div class="review-text">Claudia razume razliko med "lepa stran" in "stran ki prodaja". Naša prodaja se je v dveh mesecih po prenovi povečala za 40%.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Naša instagram statistika je v enem mescu skočila ko še nikoli prej. Videji se prov sami od sebe vrtijo, ne vem kaj dela ona ampak deluje 😅</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★<span class="dim">★★</span></div>
-        <div class="review-text">Stran ok, ampak na popravke sem čakala par dni. Drugače pa v redu.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">Cena je poštena, na trgu sem videla ponudbe za dvojno več za pol manj kvalitete. 100% priporočam.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">Naročili AI vizuale za novo kolekcijo — vse pripravljeno v 48h. Stranke sploh niso opazil da niso pravi posnetki, kar je za nas zmaga.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">Sodelujemo že drugi mesec za video in res nimam pripomb. Vsak posnetek je presežek, hvala Claudia 🙌</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">Pričakovala sem mogoče malo bolj hitro izdelavo, ampak rezultat je super, tako da ne morem se pritoževat. Dober vtis pustila.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">Claudia razume razliko med "lepa stran" in "stran ki prodaja". Naša prodaja se je v 2 mesecih po prenovi dvignla za skoraj 40%. Številke ne lažejo.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">Tehnično nism doma in vse mi je razložila tako da sem dejansko razumela. Ne rabim se s tem ukvarjat, kar je tist kar sm hotela.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">Stran in social media na enem mestu — končno nekdo ki to obvlada oboje. Hvaležen sem za sodelovanje.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">Hitra, profi in zna prisluhniti. Nimam kaj dodat. 5 zvezdic.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★<span class="dim">★★</span></div>
-        <div class="review-text">Cena na koncu malo višja kot dogovor. Delo solidno, ampak naslednjič bi raje jasen znesek vnaprej.</div>
+        <div class="review-text">Sodelujemo že drugi mesec za video vsebine in ne razmišljam o menjavi. Vsak posnetek je presežek.</div>
       </div>
     </div>
 
-    <!-- Vrstica 2 — gibanje desno -->
     <div class="reviews-track reviews-track-2">
-      <!-- Set 1 -->
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">AI vsebine ki jih dobivamo so vsak mesec sveže in v stilu našega brenda. Boljšega razmerja kvalitete in cene si ne predstavljam.</div>
+        <div class="review-text">AI vsebine, ki jih dobivamo, so vsak mesec sveže in v stilu našega brenda. Ne bi mogli boljšega razmerja kvalitete in cene.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Mesečno dobimo 6 video vsebin za naša omrežja in vsi so kvalitetno narejeni. Ima občutek za to kar dela na družbenih omrežjih.</div>
+        <div class="review-text">Tehnično nisem doma — Claudia mi je razložila vse na način, da sem razumela vsak korak. Ni se mi treba ukvarjati z ničemer.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Imeli smo zelo specifične zahteve glede dizajna in vse jih je upoštevala. Še svoje predloge je dodala in bili so točno na mestu.</div>
+        <div class="review-text">Mesečno dobimo 6 video vsebin za naša omrežja in vsi so kakovostno narejeni. Claudia ima občutek za to kar deluje na družbenih omrežjih.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Stran v redu, all good. Pri prvi reviziji sem mislu da bom moral še veliko popravljat ampak je bilo skoraj vse v redu že na prvi pogled.</div>
+        <div class="review-text">Imeli smo zelo specifične zahteve glede dizajna — Claudia jih je vse upoštevala in dodala še svoje predloge ki so bili točno na mestu.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">AI slike so rešitev — manj stroškov, več kreative. Claudia dela hitro in razume brand.</div>
+        <div class="review-text">Zame so AI slike rešitev — manj stroškov za fotografa, več kreativnih možnosti. Claudia te dela zelo hitro in z razumevanjem brenda.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">TikTok mi je končno šel viralno ko sva začela sodelovat. Vsebina je točno to kar moja publika gleda. Resno priporočam.</div>
+        <div class="review-text">TikTok mi je končno začel delati ko sva začeli sodelovati. Vsebina je natanko to kar moja ciljna publika gleda.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Stran je hitra, lepa in dela na vseh napravah. Še bolj važno — preko nje že dobivamo redne klice, kar je itak cilj.</div>
+        <div class="review-text">Stran je hitra, lepa in deluje na vseh napravah. Kar je še bolj pomembno — preko nje že dobivamo redne klice strank.</div>
       </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★<span class="dim">★</span></div>
-        <div class="review-text">Sodelovanje je bilo prijetno in profesionalno. Edino kar bi izboljšal je čas prvega odziva, ker sem na ponudbo čakala par dni. Drugače 5 zvezdic.</div>
-      </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Najbolj cenim da Claudia razume kaj resnično rabimo, ne pa kar je njej prikladno. Vedno za nas.</div>
+        <div class="review-text">Najbolj cenim da Claudia razume kaj resnično rabimo, ne pa kar je njej prikladno narediti. Rezultat je vedno za nas, ne za njo.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">AI videi so popolnoma spremenili naše oglase. Kreativno svobodo imamo neomejeno, stroški so pa mnogo manjši kot pri klasičnem produkcijskem snemanju.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Imeli smo zelo skromen budget za stran in Claudia je to poštno povedala. Brez nepotrebnih dodatnih stroškov, brez presenetenj. Hvala!</div>
       </div>
 
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">AI videi so popolno spremenli naše oglase. Kreativna svoboda neomejena, stroški pa nizki — sanje za malo podjetje kot smo mi.</div>
+        <div class="review-text">AI vsebine, ki jih dobivamo, so vsak mesec sveže in v stilu našega brenda. Ne bi mogli boljšega razmerja kvalitete in cene.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Skromen budget, brez težav. Povedala je takoj kaj je možno in kaj ne. Brez dodatnih nepričakovanih stroškov, hvala 🙏</div>
+        <div class="review-text">Tehnično nisem doma — Claudia mi je razložila vse na način, da sem razumela vsak korak. Ni se mi treba ukvarjati z ničemer.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Hitro odgovori, naredi profi delo, cena fer. Kaj več hočeš? Mi smo zadovoljni in nadaljujemo sodelovanje.</div>
+        <div class="review-text">Mesečno dobimo 6 video vsebin za naša omrežja in vsi so kakovostno narejeni. Claudia ima občutek za to kar deluje na družbenih omrežjih.</div>
       </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★<span class="dim">★★</span></div>
-        <div class="review-text">Iskreno, prvotni rok je bil prekoračen za en teden. Rezultat je sicer dober ampak časovno mi je bilo malo težje. Še vedno priporočam.</div>
-      </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Rabu sem stran za moj nov posel in ne vem kaj bi brez nje. Kvalitetno, hitro, in cena je bila to kar smo se zmenil. Nič skritih stroškov.</div>
+        <div class="review-text">Imeli smo zelo specifične zahteve glede dizajna — Claudia jih je vse upoštevala in dodala še svoje predloge ki so bili točno na mestu.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Najboljša odločitev v zadnjem letu. Pika.</div>
+        <div class="review-text">Zame so AI slike rešitev — manj stroškov za fotografa, več kreativnih možnosti. Claudia te dela zelo hitro in z razumevanjem brenda.</div>
       </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★<span class="dim">★</span></div>
-        <div class="review-text">Vsebina za insta je top, sploh AI slike. Pri kakšnih videjih bi si želel še malo bolj agresiven stil, ampak to so tudi najini dogovori. Drugač super.</div>
-      </div>
-
-      <!-- Set 2 (duplicate for seamless loop) -->
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">AI vsebine ki jih dobivamo so vsak mesec sveže in v stilu našega brenda. Boljšega razmerja kvalitete in cene si ne predstavljam.</div>
+        <div class="review-text">TikTok mi je končno začel delati ko sva začeli sodelovati. Vsebina je natanko to kar moja ciljna publika gleda.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Mesečno dobimo 6 video vsebin za naša omrežja in vsi so kvalitetno narejeni. Ima občutek za to kar dela na družbenih omrežjih.</div>
+        <div class="review-text">Stran je hitra, lepa in deluje na vseh napravah. Kar je še bolj pomembno — preko nje že dobivamo redne klice strank.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Imeli smo zelo specifične zahteve glede dizajna in vse jih je upoštevala. Še svoje predloge je dodala in bili so točno na mestu.</div>
+        <div class="review-text">Najbolj cenim da Claudia razume kaj resnično rabimo, ne pa kar je njej prikladno narediti. Rezultat je vedno za nas, ne za njo.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">Stran v redu, all good. Pri prvi reviziji sem mislu da bom moral še veliko popravljat ampak je bilo skoraj vse v redu že na prvi pogled.</div>
+        <div class="review-text">AI videi so popolnoma spremenili naše oglase. Kreativno svobodo imamo neomejeno, stroški so pa mnogo manjši kot pri klasičnem produkcijskem snemanju.</div>
       </div>
-
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <div class="review-text">AI slike so rešitev — manj stroškov, več kreative. Claudia dela hitro in razume brand.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">TikTok mi je končno šel viralno ko sva začela sodelovat. Vsebina je točno to kar moja publika gleda. Resno priporočam.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">Stran je hitra, lepa in dela na vseh napravah. Še bolj važno — preko nje že dobivamo redne klice, kar je itak cilj.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★<span class="dim">★</span></div>
-        <div class="review-text">Sodelovanje je bilo prijetno in profesionalno. Edino kar bi izboljšal je čas prvega odziva, ker sem na ponudbo čakala par dni. Drugače 5 zvezdic.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">Najbolj cenim da Claudia razume kaj resnično rabimo, ne pa kar je njej prikladno. Vedno za nas.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">AI videi so popolno spremenli naše oglase. Kreativna svoboda neomejena, stroški pa nizki — sanje za malo podjetje kot smo mi.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">Skromen budget, brez težav. Povedala je takoj kaj je možno in kaj ne. Brez dodatnih nepričakovanih stroškov, hvala 🙏</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">Hitro odgovori, naredi profi delo, cena fer. Kaj več hočeš? Mi smo zadovoljni in nadaljujemo sodelovanje.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★<span class="dim">★★</span></div>
-        <div class="review-text">Iskreno, prvotni rok je bil prekoračen za en teden. Rezultat je sicer dober ampak časovno mi je bilo malo težje. Še vedno priporočam.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">Rabu sem stran za moj nov posel in ne vem kaj bi brez nje. Kvalitetno, hitro, in cena je bila to kar smo se zmenil. Nič skritih stroškov.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">Najboljša odločitev v zadnjem letu. Pika.</div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★<span class="dim">★</span></div>
-        <div class="review-text">Vsebina za insta je top, sploh AI slike. Pri kakšnih videjih bi si želel še malo bolj agresiven stil, ampak to so tudi najini dogovori. Drugač super.</div>
+        <div class="review-text">Imeli smo zelo skromen budget za stran in Claudia je to poštno povedala. Brez nepotrebnih dodatnih stroškov, brez presenetenj. Hvala!</div>
       </div>
     </div>
   </div>
@@ -2627,7 +2469,6 @@
 </footer>
 
 <script>
-  // ——— CURSOR SPOTLIGHT (globalni efekt sledi miški) ———
   (function() {
     const spotlight = document.getElementById('cursorSpotlight');
     if (!spotlight) return;
@@ -2646,7 +2487,6 @@
     });
   })();
 
-  // ——— GLOW BORDER ZA KARTICE (sledi miški po kartici) ———
   (function() {
     const isTouchDevice = window.matchMedia('(hover: none)').matches;
     if (isTouchDevice) return;
@@ -2674,7 +2514,6 @@
     });
   })();
 
-  // ——— SCANNER EFFECT ZA WEB REFERENCE ———
   (function() {
     const ASCII_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789(){}[]<>;:,._-+=!@#$%^&*|\\/\"'`~?";
     
@@ -2703,19 +2542,16 @@
       let asciiInterval = null;
       let scanProgress = 0;
       let isAnimating = false;
-      let direction = 1; // 1 = scanning to ASCII, -1 = back to image
+      let direction = 1;
       
-      // Pre-fill ASCII
       const updateAsciiSize = () => {
         const w = Math.floor(ascii.offsetWidth / 5);
         const h = Math.floor(ascii.offsetHeight / 8);
         ascii.textContent = generateCode(w, h);
       };
       
-      // Initial fill
       setTimeout(updateAsciiSize, 100);
       
-      // Refresh ASCII characters periodically (creates "live data" feel)
       const startAsciiRefresh = () => {
         if (asciiInterval) return;
         asciiInterval = setInterval(() => {
@@ -2733,7 +2569,6 @@
       };
       
       const animate = () => {
-        // Move scanner from 0% to 100% (and back)
         scanProgress += direction * 1.5;
         
         if (scanProgress >= 100) {
@@ -2742,7 +2577,6 @@
         } else if (scanProgress <= 0) {
           scanProgress = 0;
           direction = 1;
-          // If returning to start and not hovering (and not on mobile auto-mode), stop
           const isTouchDevice = window.matchMedia('(hover: none)').matches;
           if (!card.matches(':hover') && !card.dataset.autoScan) {
             isAnimating = false;
@@ -2755,11 +2589,8 @@
           }
         }
         
-        // Scanner position
         scanner.style.left = scanProgress + '%';
-        // Image clip - reveal from left as scanner moves right
         img.style.setProperty('--reveal', scanProgress + '%');
-        // ASCII reveal - shows from left to scanner position
         ascii.style.setProperty('--reveal-end', scanProgress + '%');
         
         animFrame = requestAnimationFrame(animate);
@@ -2776,40 +2607,32 @@
       };
       
       card.addEventListener('mouseenter', startScan);
-      // Don't stop on mouseleave — let it complete the cycle for smoothness
       
-      // ——— AVTOMATSKO SPROŽANJE SKENERJA NA MOBILNIH NAPRAVAH ———
-      // Ko stranka scrolla do kartice na telefonu, se efekt sam sproži
       const isTouchDevice = window.matchMedia('(hover: none)').matches;
       if (isTouchDevice) {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              // Card je viden — sproži skener (loop continuously)
               card.dataset.autoScan = 'true';
               startScan();
             } else {
-              // Card ni več viden — ustavi
               delete card.dataset.autoScan;
             }
           });
         }, {
-          threshold: 0.5, // Sproži ko je vsaj 50% kartice vidno
+          threshold: 0.5,
           rootMargin: '0px'
         });
         
         observer.observe(card);
       }
       
-      // Window resize - update ASCII size
       window.addEventListener('resize', () => {
         if (!isAnimating) updateAsciiSize();
       });
     });
   })();
 
-  // ——— AUTO-PLAY ALL VIDEOS ———
-  // Make sure all videos actually start playing on load (some browsers need a nudge)
   (function() {
     function playAll() {
       const videos = document.querySelectorAll('.autoplay-video');
@@ -2817,7 +2640,6 @@
         const p = v.play();
         if (p !== undefined) {
           p.catch(() => {
-            // Fallback: retry on user interaction
             const retry = () => { v.play(); document.removeEventListener('click', retry); document.removeEventListener('touchstart', retry); };
             document.addEventListener('click', retry, { once: true });
             document.addEventListener('touchstart', retry, { once: true });
