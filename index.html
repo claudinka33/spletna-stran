@@ -614,6 +614,11 @@ nav {
   color: var(--navy);
   letter-spacing: -0.02em;
 }
+.service-inquiry {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--blue); font-weight: 600; font-size: 14px;
+  padding-top: 8px;
+}
 
 /* ========== PORTFOLIO ========== */
 .portfolio {
@@ -1022,62 +1027,6 @@ nav {
   font-weight: 700;
   font-size: 18px;
 }
-.review-stars {
-  display: flex;
-  gap: 2px;
-  margin-bottom: 12px;
-}
-.review-stars svg {
-  width: 14px; height: 14px;
-  color: #FBBF24;
-  fill: #FBBF24;
-}
-.review-stars svg.empty {
-  color: #E2E8F0;
-  fill: #E2E8F0;
-}
-.review-text {
-  font-size: 14px;
-  line-height: 1.55;
-  color: var(--gray-700);
-  margin-bottom: 16px;
-}
-.review-author {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-top: 14px;
-  border-top: 1px solid var(--gray-100);
-}
-.review-avatar {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: var(--blue-lighter);
-  color: var(--blue);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 13px;
-  flex-shrink: 0;
-}
-.review-avatar.v1 { background: #DBEAFE; color: #2563EB; }
-.review-avatar.v2 { background: #FEF3C7; color: #B45309; }
-.review-avatar.v3 { background: #D1FAE5; color: #059669; }
-.review-avatar.v4 { background: #FEE2E2; color: #DC2626; }
-.review-avatar.v5 { background: #E0E7FF; color: #4F46E5; }
-.review-avatar.v6 { background: #FCE7F3; color: #DB2777; }
-.review-name {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--navy);
-  line-height: 1.2;
-}
-.review-role {
-  font-size: 11px;
-  color: var(--gray-500);
-  margin-top: 2px;
-}
 
 /* ========== COMPARISON ========== */
 .compare-section {
@@ -1420,6 +1369,73 @@ nav {
   padding: 0 28px 24px;
 }
 
+/* ========== FREE PREVIEW PROMO ========== */
+.preview-promo { padding: 80px 0; }
+.preview-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 55%, var(--blue) 165%);
+  border-radius: 28px;
+  padding: clamp(36px, 5vw, 72px);
+  color: var(--white);
+  box-shadow: var(--shadow-lg);
+}
+.preview-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 50% 60% at 88% 12%, rgba(96,165,250,0.28), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 5% 90%, rgba(37,99,235,0.22), transparent 70%);
+  pointer-events: none;
+}
+.preview-grid {
+  position: relative; z-index: 2;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+@media (max-width: 860px) {
+  .preview-grid { grid-template-columns: 1fr; gap: 36px; }
+}
+.preview-card h2 {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800; line-height: 1.08;
+  letter-spacing: -0.03em; margin-bottom: 18px;
+}
+.preview-card h2 .accent {
+  background: linear-gradient(135deg, #93C5FD 0%, #FFFFFF 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.preview-lead {
+  font-size: clamp(15px, 1.3vw, 18px);
+  color: var(--blue-light); line-height: 1.65;
+  margin-bottom: 32px; max-width: 540px;
+}
+.preview-lead strong { color: #fff; font-weight: 600; }
+.preview-steps { display: flex; flex-direction: column; gap: 12px; }
+.preview-step {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 16px 18px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.preview-step-num {
+  flex-shrink: 0;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--blue-sky); color: var(--navy);
+  font-weight: 800; font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+.preview-step-text { font-size: 14px; color: var(--blue-light); line-height: 1.45; }
+.preview-step-text strong { color: #fff; font-weight: 600; display: block; margin-bottom: 2px; }
+.preview-card .btn-primary { background: var(--white); color: var(--navy); }
+.preview-card .btn-primary:hover { background: var(--blue-lighter); color: var(--navy); }
+
 /* ========== FINAL CTA ========== */
 .final-cta {
   padding: 120px 0;
@@ -1594,6 +1610,10 @@ footer {
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
         30 minut, brezplačno
       </span>
+      <span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        Brezplačen predogled strani
+      </span>
     </div>
 
     <!-- Hero visual -->
@@ -1752,7 +1772,6 @@ footer {
         <span class="logo-item">GDC Gradnje</span>
         <span class="logo-item">Bistro Jelša</span>
         <span class="logo-item">Proqlea</span>
-        <!-- Duplicate for infinite scroll -->
         <span class="logo-item">ASfix</span>
         <span class="logo-item">Belux</span>
         <span class="logo-item">Ujete Bedarije</span>
@@ -1825,8 +1844,10 @@ footer {
           <li><span class="service-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="service-feat-text">Pripravljeno v 7–10 dneh</span></li>
         </ul>
         <div class="service-price">
-          <span class="service-price-label">Od</span>
-          <span class="service-price-value">€480</span>
+          <a href="#kontakt" class="service-inquiry">
+            Pošlji povpraševanje
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
         </div>
       </div>
 
@@ -1843,8 +1864,10 @@ footer {
           <li><span class="service-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="service-feat-text">Pripravljeno za rast</span></li>
         </ul>
         <div class="service-price">
-          <span class="service-price-label">Od</span>
-          <span class="service-price-value">€1.990</span>
+          <a href="#kontakt" class="service-inquiry">
+            Pošlji povpraševanje
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
         </div>
       </div>
 
@@ -1861,7 +1884,7 @@ footer {
           <li><span class="service-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="service-feat-text">AI pomočniki za zaposlene</span></li>
         </ul>
         <div class="service-price">
-          <a href="#kontakt" style="display: inline-flex; align-items: center; gap: 6px; color: var(--blue); font-weight: 600; font-size: 14px; padding-top: 8px;">
+          <a href="#kontakt" class="service-inquiry">
             Pošlji povpraševanje
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
@@ -1881,8 +1904,10 @@ footer {
           <li><span class="service-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="service-feat-text">Integracije z obstoječim</span></li>
         </ul>
         <div class="service-price">
-          <span class="service-price-label">Od</span>
-          <span class="service-price-value">€2.990</span>
+          <a href="#kontakt" class="service-inquiry">
+            Pošlji povpraševanje
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -1968,50 +1993,37 @@ footer {
             </div>
             <svg viewBox="0 0 480 340" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: auto;">
             <rect width="480" height="340" fill="#FFFFFF"/>
-            <!-- Sidebar -->
             <rect x="0" y="0" width="64" height="340" fill="#0B1E3F"/>
             <rect x="12" y="14" width="40" height="6" rx="2" fill="#60A5FA"/>
             <rect x="12" y="28" width="28" height="3" rx="1" fill="#94A3B8" opacity="0.5"/>
-
             <rect x="8" y="46" width="48" height="16" rx="4" fill="#2563EB"/>
             <rect x="14" y="52" width="36" height="4" rx="1" fill="#FFFFFF"/>
-
             <rect x="14" y="72" width="36" height="3" rx="1" fill="#FFFFFF" opacity="0.4"/>
             <rect x="14" y="84" width="32" height="3" rx="1" fill="#FFFFFF" opacity="0.4"/>
             <rect x="14" y="96" width="38" height="3" rx="1" fill="#FFFFFF" opacity="0.4"/>
             <rect x="14" y="108" width="30" height="3" rx="1" fill="#FFFFFF" opacity="0.4"/>
             <rect x="14" y="120" width="34" height="3" rx="1" fill="#FFFFFF" opacity="0.4"/>
-
-            <!-- Header -->
             <text x="80" y="30" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#0B1E3F">Pregled zaloge</text>
             <text x="80" y="42" font-family="Poppins, sans-serif" font-size="6" fill="#64748B">AS System · interni dashboard</text>
-
-            <!-- Stat cards -->
             <rect x="80" y="56" width="120" height="60" rx="6" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="0.5"/>
             <text x="90" y="72" font-family="Poppins, sans-serif" font-size="5" fill="#2563EB" font-weight="600">SKU NA ZALOGI</text>
             <text x="90" y="96" font-family="Poppins, sans-serif" font-size="20" font-weight="800" fill="#0B1E3F">1,247</text>
             <text x="90" y="108" font-family="Poppins, sans-serif" font-size="5" fill="#10B981" font-weight="600">▲ +8% ta teden</text>
-
             <rect x="208" y="56" width="120" height="60" rx="6" fill="#0B1E3F"/>
             <text x="218" y="72" font-family="Poppins, sans-serif" font-size="5" fill="#60A5FA" font-weight="600">AKTIVNA NAROČILA</text>
             <text x="218" y="96" font-family="Poppins, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF">42</text>
             <text x="218" y="108" font-family="Poppins, sans-serif" font-size="5" fill="#60A5FA" font-weight="600">▲ +12 danes</text>
-
             <rect x="336" y="56" width="132" height="60" rx="6" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="0.5"/>
             <text x="346" y="72" font-family="Poppins, sans-serif" font-size="5" fill="#2563EB" font-weight="600">PROMET MESEC</text>
             <text x="346" y="96" font-family="Poppins, sans-serif" font-size="20" font-weight="800" fill="#0B1E3F">€84k</text>
             <text x="346" y="108" font-family="Poppins, sans-serif" font-size="5" fill="#10B981" font-weight="600">▲ +23% MoM</text>
-
-            <!-- Chart -->
             <rect x="80" y="128" width="248" height="200" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.5"/>
             <text x="92" y="144" font-family="Poppins, sans-serif" font-size="7" font-weight="700" fill="#0B1E3F">Gibanje zaloge</text>
             <text x="92" y="154" font-family="Poppins, sans-serif" font-size="5" fill="#64748B">Zadnjih 12 mesecev</text>
-
             <line x1="92" y1="195" x2="316" y2="195" stroke="#F1F5F9" stroke-width="0.5"/>
             <line x1="92" y1="225" x2="316" y2="225" stroke="#F1F5F9" stroke-width="0.5"/>
             <line x1="92" y1="255" x2="316" y2="255" stroke="#F1F5F9" stroke-width="0.5"/>
             <line x1="92" y1="285" x2="316" y2="285" stroke="#F1F5F9" stroke-width="0.5"/>
-
             <path d="M 95 280 L 115 265 L 135 270 L 155 245 L 175 250 L 195 225 L 215 230 L 235 205 L 255 200 L 275 185 L 295 180 L 313 185" stroke="#2563EB" stroke-width="2" fill="none" stroke-linecap="round"/>
             <path d="M 95 280 L 115 265 L 135 270 L 155 245 L 175 250 L 195 225 L 215 230 L 235 205 L 255 200 L 275 185 L 295 180 L 313 185 L 313 310 L 95 310 Z" fill="url(#chartGrad2)" opacity="0.3"/>
             <defs>
@@ -2020,39 +2032,30 @@ footer {
                 <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
               </linearGradient>
             </defs>
-
             <circle cx="275" cy="185" r="3" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.5"/>
             <circle cx="295" cy="180" r="3" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.5"/>
-
-            <!-- Right list -->
             <rect x="336" y="128" width="132" height="200" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.5"/>
             <text x="346" y="144" font-family="Poppins, sans-serif" font-size="7" font-weight="700" fill="#0B1E3F">Nizka zaloga</text>
-
             <rect x="346" y="152" width="112" height="22" rx="3" fill="#FEF2F2"/>
             <circle cx="354" cy="163" r="2" fill="#EF4444"/>
             <text x="360" y="162" font-family="Poppins, sans-serif" font-size="5" font-weight="600" fill="#0B1E3F">M8x40 vijak</text>
             <text x="360" y="170" font-family="Poppins, sans-serif" font-size="4" fill="#64748B">12 kos · kritično</text>
-
             <rect x="346" y="178" width="112" height="22" rx="3" fill="#FFFBEB"/>
             <circle cx="354" cy="189" r="2" fill="#F59E0B"/>
             <text x="360" y="188" font-family="Poppins, sans-serif" font-size="5" font-weight="600" fill="#0B1E3F">Sidro M10</text>
             <text x="360" y="196" font-family="Poppins, sans-serif" font-size="4" fill="#64748B">38 kos · nizka</text>
-
             <rect x="346" y="204" width="112" height="22" rx="3" fill="#FFFBEB"/>
             <circle cx="354" cy="215" r="2" fill="#F59E0B"/>
             <text x="360" y="214" font-family="Poppins, sans-serif" font-size="5" font-weight="600" fill="#0B1E3F">Vložek 12mm</text>
             <text x="360" y="222" font-family="Poppins, sans-serif" font-size="4" fill="#64748B">52 kos · nizka</text>
-
             <rect x="346" y="230" width="112" height="22" rx="3" fill="#F8FAFC"/>
             <circle cx="354" cy="241" r="2" fill="#94A3B8"/>
             <text x="360" y="240" font-family="Poppins, sans-serif" font-size="5" font-weight="600" fill="#0B1E3F">M6x30 vijak</text>
             <text x="360" y="248" font-family="Poppins, sans-serif" font-size="4" fill="#64748B">87 kos · OK</text>
-
             <rect x="346" y="256" width="112" height="22" rx="3" fill="#F8FAFC"/>
             <circle cx="354" cy="267" r="2" fill="#94A3B8"/>
             <text x="360" y="266" font-family="Poppins, sans-serif" font-size="5" font-weight="600" fill="#0B1E3F">Plastični vložek</text>
             <text x="360" y="274" font-family="Poppins, sans-serif" font-size="4" fill="#64748B">124 kos · OK</text>
-
             <rect x="346" y="290" width="60" height="14" rx="3" fill="#2563EB"/>
             <text x="376" y="299" font-family="Poppins, sans-serif" font-size="5" font-weight="600" fill="#FFFFFF" text-anchor="middle">Naroči</text>
             </svg>
@@ -2094,14 +2097,10 @@ footer {
             </div>
             <svg viewBox="0 0 480 340" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: auto;">
             <rect width="480" height="340" fill="#FFFFFF"/>
-
-            <!-- Top bar -->
             <rect x="0" y="0" width="480" height="32" fill="#0B1E3F"/>
             <text x="16" y="20" font-family="Poppins, sans-serif" font-size="9" font-weight="700" fill="#FFFFFF">Alpska šola · CRM</text>
             <rect x="380" y="10" width="84" height="16" rx="8" fill="#2563EB"/>
             <text x="422" y="20" font-family="Poppins, sans-serif" font-size="6" font-weight="600" fill="#FFFFFF" text-anchor="middle">+ Nov učenec</text>
-
-            <!-- Tabs -->
             <rect x="0" y="32" width="480" height="22" fill="#FAFBFE" stroke="#E2E8F0" stroke-width="0.3"/>
             <text x="20" y="46" font-family="Poppins, sans-serif" font-size="6" font-weight="600" fill="#2563EB">Učenci</text>
             <rect x="14" y="50" width="28" height="2" fill="#2563EB"/>
@@ -2109,33 +2108,24 @@ footer {
             <text x="110" y="46" font-family="Poppins, sans-serif" font-size="6" fill="#64748B">Termini</text>
             <text x="146" y="46" font-family="Poppins, sans-serif" font-size="6" fill="#64748B">Plačila</text>
             <text x="180" y="46" font-family="Poppins, sans-serif" font-size="6" fill="#64748B">Letaki</text>
-
-            <!-- Stats row -->
             <rect x="14" y="62" width="108" height="42" rx="5" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="0.5"/>
             <text x="22" y="75" font-family="Poppins, sans-serif" font-size="5" fill="#2563EB" font-weight="600">AKTIVNI UČENCI</text>
             <text x="22" y="94" font-family="Poppins, sans-serif" font-size="16" font-weight="800" fill="#0B1E3F">147</text>
-
             <rect x="128" y="62" width="108" height="42" rx="5" fill="#0B1E3F"/>
             <text x="136" y="75" font-family="Poppins, sans-serif" font-size="5" fill="#60A5FA" font-weight="600">DANES NA SNEGU</text>
             <text x="136" y="94" font-family="Poppins, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">38</text>
-
             <rect x="242" y="62" width="108" height="42" rx="5" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="0.5"/>
             <text x="250" y="75" font-family="Poppins, sans-serif" font-size="5" fill="#2563EB" font-weight="600">INŠTRUKTORJI</text>
             <text x="250" y="94" font-family="Poppins, sans-serif" font-size="16" font-weight="800" fill="#0B1E3F">12</text>
-
             <rect x="356" y="62" width="110" height="42" rx="5" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="0.5"/>
             <text x="364" y="75" font-family="Poppins, sans-serif" font-size="5" fill="#10B981" font-weight="600">PRIHODEK SEZONA</text>
             <text x="364" y="94" font-family="Poppins, sans-serif" font-size="16" font-weight="800" fill="#0B1E3F">€32.4k</text>
-
-            <!-- Table header -->
             <rect x="14" y="114" width="452" height="20" rx="3" fill="#F1F5F9"/>
             <text x="22" y="127" font-family="Poppins, sans-serif" font-size="5" font-weight="700" fill="#64748B">UČENEC</text>
             <text x="140" y="127" font-family="Poppins, sans-serif" font-size="5" font-weight="700" fill="#64748B">KATEGORIJA</text>
             <text x="220" y="127" font-family="Poppins, sans-serif" font-size="5" font-weight="700" fill="#64748B">INŠTRUKTOR</text>
             <text x="310" y="127" font-family="Poppins, sans-serif" font-size="5" font-weight="700" fill="#64748B">NASLEDNJI TERMIN</text>
             <text x="420" y="127" font-family="Poppins, sans-serif" font-size="5" font-weight="700" fill="#64748B">STATUS</text>
-
-            <!-- Row 1 -->
             <rect x="14" y="134" width="452" height="32" fill="#FFFFFF"/>
             <circle cx="28" cy="150" r="8" fill="#DBEAFE"/>
             <text x="28" y="153" font-family="Poppins, sans-serif" font-size="6" font-weight="700" fill="#2563EB" text-anchor="middle">LK</text>
@@ -2147,8 +2137,6 @@ footer {
             <text x="310" y="152" font-family="Poppins, sans-serif" font-size="6" fill="#0B1E3F">Sob 09:00 · Rogla</text>
             <rect x="418" y="144" width="42" height="12" rx="6" fill="#D1FAE5"/>
             <text x="439" y="152" font-family="Poppins, sans-serif" font-size="5" font-weight="600" fill="#059669" text-anchor="middle">Plačano</text>
-
-            <!-- Row 2 -->
             <rect x="14" y="166" width="452" height="32" fill="#FAFBFE"/>
             <circle cx="28" cy="182" r="8" fill="#FEE2E2"/>
             <text x="28" y="185" font-family="Poppins, sans-serif" font-size="6" font-weight="700" fill="#DC2626" text-anchor="middle">HM</text>
@@ -2160,8 +2148,6 @@ footer {
             <text x="310" y="184" font-family="Poppins, sans-serif" font-size="6" fill="#0B1E3F">Ned 10:30 · Rogla</text>
             <rect x="418" y="176" width="42" height="12" rx="6" fill="#FEF3C7"/>
             <text x="439" y="184" font-family="Poppins, sans-serif" font-size="5" font-weight="600" fill="#B45309" text-anchor="middle">Čaka</text>
-
-            <!-- Row 3 -->
             <rect x="14" y="198" width="452" height="32" fill="#FFFFFF"/>
             <circle cx="28" cy="214" r="8" fill="#D1FAE5"/>
             <text x="28" y="217" font-family="Poppins, sans-serif" font-size="6" font-weight="700" fill="#059669" text-anchor="middle">FP</text>
@@ -2173,8 +2159,6 @@ footer {
             <text x="310" y="216" font-family="Poppins, sans-serif" font-size="6" fill="#0B1E3F">Sob 11:00 · Rogla</text>
             <rect x="418" y="208" width="42" height="12" rx="6" fill="#D1FAE5"/>
             <text x="439" y="216" font-family="Poppins, sans-serif" font-size="5" font-weight="600" fill="#059669" text-anchor="middle">Plačano</text>
-
-            <!-- Row 4 -->
             <rect x="14" y="230" width="452" height="32" fill="#FAFBFE"/>
             <circle cx="28" cy="246" r="8" fill="#FDE68A"/>
             <text x="28" y="249" font-family="Poppins, sans-serif" font-size="6" font-weight="700" fill="#B45309" text-anchor="middle">ZK</text>
@@ -2186,8 +2170,6 @@ footer {
             <text x="310" y="248" font-family="Poppins, sans-serif" font-size="6" fill="#0B1E3F">Ned 09:00 · Rogla</text>
             <rect x="418" y="240" width="42" height="12" rx="6" fill="#D1FAE5"/>
             <text x="439" y="248" font-family="Poppins, sans-serif" font-size="5" font-weight="600" fill="#059669" text-anchor="middle">Plačano</text>
-
-            <!-- Row 5 -->
             <rect x="14" y="262" width="452" height="32" fill="#FFFFFF"/>
             <circle cx="28" cy="278" r="8" fill="#DBEAFE"/>
             <text x="28" y="281" font-family="Poppins, sans-serif" font-size="6" font-weight="700" fill="#2563EB" text-anchor="middle">JN</text>
@@ -2199,8 +2181,6 @@ footer {
             <text x="310" y="280" font-family="Poppins, sans-serif" font-size="6" fill="#0B1E3F">Sob 09:00 · Rogla</text>
             <rect x="418" y="272" width="42" height="12" rx="6" fill="#D1FAE5"/>
             <text x="439" y="280" font-family="Poppins, sans-serif" font-size="5" font-weight="600" fill="#059669" text-anchor="middle">Plačano</text>
-
-            <!-- Footer -->
             <text x="14" y="316" font-family="Poppins, sans-serif" font-size="5" fill="#64748B">Prikazanih 5 od 147 učencev</text>
             <text x="466" y="316" font-family="Poppins, sans-serif" font-size="5" fill="#64748B" text-anchor="end">Sezona 2025/26</text>
             </svg>
@@ -2285,6 +2265,53 @@ footer {
   </div>
 </section>
 
+<!-- PREVIEW PROMO -->
+<section class="preview-promo reveal">
+  <div class="wrap">
+    <div class="preview-card">
+      <div class="preview-grid">
+        <div>
+          <div class="preview-badge">
+            <span class="badge-dot"></span>
+            Brezplačno · brez obveznosti
+          </div>
+          <h2>Vašo novo spletno stran vidite <span class="accent">še preden plačate.</span></h2>
+          <p class="preview-lead">
+            Za resne stranke pripravim vizualni predogled vaše nove spletne strani — brez vnaprejšnjega plačila in brez obveznosti. Šele ko vidite konkreten rezultat, se odločite, ali ima smisel nadaljevati z izdelavo.
+          </p>
+          <a href="#kontakt" class="btn btn-primary">
+            Naročite brezplačen predogled
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="preview-steps">
+          <div class="preview-step">
+            <div class="preview-step-num">1</div>
+            <div class="preview-step-text">
+              <strong>Kratek klic</strong>
+              <span>Poveste mi, kaj počnete in kaj želite od strani. 15–30 minut, brezplačno.</span>
+            </div>
+          </div>
+          <div class="preview-step">
+            <div class="preview-step-num">2</div>
+            <div class="preview-step-text">
+              <strong>Predogled</strong>
+              <span>Pripravim vizualni predlog, kako bi vaša nova stran lahko izgledala.</span>
+            </div>
+          </div>
+          <div class="preview-step">
+            <div class="preview-step-num">3</div>
+            <div class="preview-step-text">
+              <strong>Odločitev</strong>
+              <span>Šele ko vidite rezultat, se odločite, ali nadaljujeva z izdelavo.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section class="testimonials reveal">
   <div class="wrap">
@@ -2305,7 +2332,7 @@ footer {
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
           </div>
-          <div class="rating-meta">Povprečna ocena · <strong>50 ocen</strong></div>
+          <div class="rating-meta">Povprečna ocena · <strong>33 ocen</strong></div>
         </div>
       </div>
     </div>
@@ -2313,7 +2340,6 @@ footer {
     <div class="testimonials-grid">
       <div class="testimonials-track" id="testimonialsTrack">
         <div class="testimonials-page" data-page="0">
-          <!-- 1 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2333,7 +2359,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="1">
-          <!-- 2 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2353,7 +2378,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="2">
-          <!-- 3 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2373,7 +2397,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="3">
-          <!-- 4 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2393,7 +2416,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="4">
-          <!-- 5 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2413,7 +2435,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="5">
-          <!-- 6 (4 stars) -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2433,7 +2454,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="6">
-          <!-- 7 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2453,7 +2473,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="7">
-          <!-- 8 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2473,7 +2492,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="8">
-          <!-- 9 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2493,7 +2511,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="9">
-          <!-- 10 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2513,7 +2530,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="10">
-          <!-- 11 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2533,7 +2549,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="11">
-          <!-- 12 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2553,7 +2568,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="12">
-          <!-- 13 (4 stars) -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2573,7 +2587,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="13">
-          <!-- 14 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2593,7 +2606,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="14">
-          <!-- 15 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2613,7 +2625,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="15">
-          <!-- 16 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2633,7 +2644,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="16">
-          <!-- 17 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2653,7 +2663,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="17">
-          <!-- 18 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2673,7 +2682,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="18">
-          <!-- 19 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2693,7 +2701,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="19">
-          <!-- 20 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2713,7 +2720,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="20">
-          <!-- 21 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2733,7 +2739,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="21">
-          <!-- 22 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2753,7 +2758,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="22">
-          <!-- 23 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2773,7 +2777,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="23">
-          <!-- 24 (4 stars) -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2793,7 +2796,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="24">
-          <!-- 25 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2813,7 +2815,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="25">
-          <!-- 26 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2833,7 +2834,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="26">
-          <!-- 27 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2853,7 +2853,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="27">
-          <!-- 28 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2873,7 +2872,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="28">
-          <!-- 29 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2893,7 +2891,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="29">
-          <!-- 30 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2913,7 +2910,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="30">
-          <!-- 31 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2933,7 +2929,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="31">
-          <!-- 32 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2953,7 +2948,6 @@ footer {
         </div>
         </div>
         <div class="testimonials-page" data-page="32">
-          <!-- 33 -->
         <div class="review">
           <div class="review-stars">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -2972,346 +2966,6 @@ footer {
           </div>
         </div>
         </div>
-        <div class="testimonials-page" data-page="33">
-          <!-- 34 -->
-        <div class="review">
-          <div class="review-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-          </div>
-          <p class="review-text">Prej smo imeli WordPress, ki ga je bilo treba vzdrževati vsak mesec. Zdaj imamo stran, ki dela. Konec zgodbe.</p>
-          <div class="review-author">
-            <div class="review-avatar v4">RK</div>
-            <div>
-              <div class="review-name">Robert K.</div>
-              <div class="review-role">Lastnik · serviser hladilnih sistemov</div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="testimonials-page" data-page="34">
-          <!-- 35 (4 stars) -->
-        <div class="review">
-          <div class="review-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24" class="empty"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-          </div>
-          <p class="review-text">Dobra izkušnja. Občasno smo morali počakati par dni na odgovor, ker je polna projektov, ampak rezultat je vreden.</p>
-          <div class="review-author">
-            <div class="review-avatar v5">MO</div>
-            <div>
-              <div class="review-name">Miha O.</div>
-              <div class="review-role">Vodja IT · proizvodno podjetje</div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="testimonials-page" data-page="35">
-          <!-- 36 -->
-        <div class="review">
-          <div class="review-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-          </div>
-          <p class="review-text">Sodelovanje se je iz enkratnega projekta razvilo v mesečno partnerstvo. To je največja pohvala, ki jo lahko dam.</p>
-          <div class="review-author">
-            <div class="review-avatar v6">LB</div>
-            <div>
-              <div class="review-name">Lina B.</div>
-              <div class="review-role">Marketing direktor · turistična agencija</div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="testimonials-page" data-page="36">
-          <!-- 37 -->
-        <div class="review">
-          <div class="review-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-          </div>
-          <p class="review-text">Vsa vprašanja, ki sem jih imel, je vzela resno. Nikoli občutka, da jih ima za neumna. To je redko v tej branži.</p>
-          <div class="review-author">
-            <div class="review-avatar v1">JŠ</div>
-            <div>
-              <div class="review-name">Jaka Š.</div>
-              <div class="review-role">Lastnik · cateringa</div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="testimonials-page" data-page="37">
-          <!-- 38 -->
-        <div class="review">
-          <div class="review-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-          </div>
-          <p class="review-text">Najboljša naložba, ki sva jo z možem naredila za podjetje letos. Vrača se nam vsak mesec.</p>
-          <div class="review-author">
-            <div class="review-avatar v2">SB</div>
-            <div>
-              <div class="review-name">Suzana B.</div>
-              <div class="review-role">Soustanoviteljica · družinski hotel</div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="testimonials-page" data-page="38">
-          <!-- 39 -->
-        <div class="review">
-          <div class="review-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-          </div>
-          <p class="review-text">AI socialna omrežja? To je zame bila znanstvena fantastika. Zdaj nam objave delajo same, in to bolje kot prej ročno.</p>
-          <div class="review-author">
-            <div class="review-avatar v3">AL</div>
-            <div>
-              <div class="review-name">Aleksander L.</div>
-              <div class="review-role">Lastnik · vinarstvo</div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="testimonials-page" data-page="39">
-          <!-- 40 -->
-        <div class="review">
-          <div class="review-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-          </div>
-          <p class="review-text">Spletna stran je samo prvi korak. Vse, kar je naredila kasneje za našo digitalizacijo, je tisto, kar šteje.</p>
-          <div class="review-author">
-            <div class="review-avatar v4">JG</div>
-            <div>
-              <div class="review-name">Janez G.</div>
-              <div class="review-role">Lastnik · kovinska obdelava</div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="testimonials-page" data-page="40">
-          <!-- 41 -->
-        <div class="review">
-          <div class="review-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-          </div>
-          <p class="review-text">Mladostna energija, znanje, pravi pristop. Ne morem si predstavljati, da bi šla nazaj k običajni agenciji.</p>
-          <div class="review-author">
-            <div class="review-avatar v5">VR</div>
-            <div>
-              <div class="review-name">Vita R.</div>
-              <div class="review-role">Lastnica · spletna trgovina otroška oblačila</div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="testimonials-page" data-page="41">
-          <!-- 42 -->
-        <div class="review">
-          <div class="review-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-          </div>
-          <p class="review-text">Vse kar smo prej delali ročno v Excelu, je zdaj v lepem CRM-u. Zaposleni so srečnejši, jaz tudi.</p>
-          <div class="review-author">
-            <div class="review-avatar v6">TH</div>
-            <div>
-              <div class="review-name">Tomaž H.</div>
-              <div class="review-role">Direktor · proizvodnja kovinskih izdelkov</div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="testimonials-page" data-page="42">
-          <!-- 43 -->
-        <div class="review">
-          <div class="review-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-          </div>
-          <p class="review-text">Iskreno, sprva sem mislil, da bo prepoceni za pravo delo. Zmotil sem se. Visoka kakovost po pošteni ceni.</p>
-          <div class="review-author">
-            <div class="review-avatar v1">DK</div>
-            <div>
-              <div class="review-name">Dejan K.</div>
-              <div class="review-role">Lastnik · varovanje &amp; tehnika</div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="testimonials-page" data-page="43">
-          <!-- 44 -->
-        <div class="review">
-          <div class="review-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-          </div>
-          <p class="review-text">Strokovno, hitro, korektno. Postavila nam je celotno digitalno prisotnost od logotipa do socialnih.</p>
-          <div class="review-author">
-            <div class="review-avatar v2">PR</div>
-            <div>
-              <div class="review-name">Polona R.</div>
-              <div class="review-role">Ustanoviteljica · butični svetovalni biro</div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="testimonials-page" data-page="44">
-          <!-- 45 -->
-        <div class="review">
-          <div class="review-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-          </div>
-          <p class="review-text">Pohvala za AI klasifikacijo prihajajočih povpraševanj. Pravi leadi gredo direktno na vrh, ostalo se sami uredi.</p>
-          <div class="review-author">
-            <div class="review-avatar v3">MČ</div>
-            <div>
-              <div class="review-name">Matjaž Č.</div>
-              <div class="review-role">Vodja prodaje · gradbeni material</div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="testimonials-page" data-page="45">
-          <!-- 46 (4 stars) -->
-        <div class="review">
-          <div class="review-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24" class="empty"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-          </div>
-          <p class="review-text">Dobro razmerje cena/kvaliteta. Edina pripomba je, da bi bili veseli, če bi imela ekipo — sodelovanje bi se lahko še hitreje skaliralo.</p>
-          <div class="review-author">
-            <div class="review-avatar v4">NN</div>
-            <div>
-              <div class="review-name">Niko N.</div>
-              <div class="review-role">Lastnik · marketinška agencija</div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="testimonials-page" data-page="46">
-          <!-- 47 -->
-        <div class="review">
-          <div class="review-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-          </div>
-          <p class="review-text">Naredila mi je avtomatizacijo, ki vodi vse od povpraševanja do izdaje ponudbe. Polovica prej potrebnih klikov.</p>
-          <div class="review-author">
-            <div class="review-avatar v5">AB</div>
-            <div>
-              <div class="review-name">Aleš B.</div>
-              <div class="review-role">Lastnik · klimatske naprave</div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="testimonials-page" data-page="47">
-          <!-- 48 -->
-        <div class="review">
-          <div class="review-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-          </div>
-          <p class="review-text">Razume Slovenijo, razume kako manjša podjetja dejansko delajo. Tega ne najdeš pri velikih agencijah iz Ljubljane.</p>
-          <div class="review-author">
-            <div class="review-avatar v6">KL</div>
-            <div>
-              <div class="review-name">Klara L.</div>
-              <div class="review-role">Lastnica · butična pekarna</div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="testimonials-page" data-page="48">
-          <!-- 49 -->
-        <div class="review">
-          <div class="review-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-          </div>
-          <p class="review-text">Iz vsega srca priporočam. Ekstremno odzivna, profesionalna, in tisto kar šteje — pripelje rezultate.</p>
-          <div class="review-author">
-            <div class="review-avatar v1">EM</div>
-            <div>
-              <div class="review-name">Eva M.</div>
-              <div class="review-role">Direktorica · jezikovna šola</div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="testimonials-page" data-page="49">
-          <!-- 50 -->
-        <div class="review">
-          <div class="review-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
-          </div>
-          <p class="review-text">Za zaključek: če iščeš nekoga, ki te ne bo prevaral, ki bo razumel tvoj posel in ki bo dejansko naredil, kar obljubi — to je Claudia.</p>
-          <div class="review-author">
-            <div class="review-avatar v2">IV</div>
-            <div>
-              <div class="review-name">Igor V.</div>
-              <div class="review-role">Lastnik · elektroinstalacije</div>
-            </div>
-          </div>
-        </div>
-        </div>
       </div>
     </div>
     <div class="testimonials-controls">
@@ -3319,7 +2973,7 @@ footer {
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
       <div class="carousel-counter">
-        <strong id="carouselCurrent">1</strong> <span style="color: var(--gray-400);">/</span> 50
+        <strong id="carouselCurrent">1</strong> <span style="color: var(--gray-400);">/</span> 33
       </div>
       <button class="carousel-btn" id="nextBtn" aria-label="Naslednja stran">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
@@ -3350,8 +3004,8 @@ footer {
       </div>
       <div class="compare-row">
         <div class="label-cell">Začetna cena spletne strani</div>
-        <div>€2.000+</div>
-        <div>od €480</div>
+        <div>Visoka vstopna cena</div>
+        <div>Prijazna za MSP</div>
       </div>
       <div class="compare-row">
         <div class="label-cell">Čas do lansiranja</div>
@@ -3380,8 +3034,8 @@ footer {
       </div>
       <div class="compare-row">
         <div class="label-cell">Dolgoročno sodelovanje za rast</div>
-        <div>Od €400 / mesec</div>
-        <div>Od €150 / mesec</div>
+        <div>Dražje mesečno</div>
+        <div>Ugodnejše mesečno</div>
       </div>
     </div>
   </div>
@@ -3478,7 +3132,7 @@ footer {
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-a">
-          Ker uporabljam AI orodja (Claude, Cursor, AI Studio) in moderne razvojne workflow-e, ki mi omogočajo, da v eni uri naredim, kar bi tradicionalni razvijalec delal cel dan. Plačate rezultat, ne ur. Nimam pisarne, marketinških stroškov agencije ali treh nivojev managementa. Zato lahko spletno stran začnem že pri 480 EUR namesto 2.000+ EUR pri agenciji.
+          Ker uporabljam AI orodja (Claude, Cursor, AI Studio) in moderne razvojne workflow-e, ki mi omogočajo, da v eni uri naredim, kar bi tradicionalni razvijalec delal cel dan. Plačate rezultat, ne ur. Nimam pisarne, marketinških stroškov agencije ali treh nivojev managementa. Zato so moje cene znatno nižje od agencijskih – brez kompromisa pri kakovosti.
         </div>
       </div>
       <div class="faq-item">
@@ -3514,7 +3168,7 @@ footer {
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-a">
-          Prvih 30 dni po lansiranju je brezplačnih — popravim morebitne napake in manjše spremembe. Po tem lahko izberete mesečno sodelovanje od 150 EUR naprej (vsebine, manjše posodobitve, podpora). Pri agencijah se to obi­čajno začne pri 400 EUR mesečno. Alternativno plačate samo, ko nekaj potrebujete (urna postavka).
+          Prvih 30 dni po lansiranju je brezplačnih — popravim morebitne napake in manjše spremembe. Po tem lahko izberete mesečno sodelovanje (vsebine, manjše posodobitve, podpora). Pri agencijah se to običajno začne bistveno više. Alternativno plačate samo, ko nekaj potrebujete (urna postavka).
         </div>
       </div>
       <div class="faq-item">
@@ -3622,9 +3276,6 @@ footer {
 
     function goTo(idx) {
       currentPage = Math.max(0, Math.min(totalPages - 1, idx));
-      // Each page takes 60% width on desktop. We shift by 60% per step.
-      // To center the active card: offset so middle of active page = middle of viewport
-      // Center offset: (100% - 60%) / 2 = 20%
       const pageWidth = window.innerWidth <= 600 ? 100 : (window.innerWidth <= 900 ? 80 : 60);
       const centerOffset = (100 - pageWidth) / 2;
       const shift = currentPage * pageWidth - centerOffset;
@@ -3643,7 +3294,6 @@ footer {
     prevBtn.addEventListener('click', () => goTo(currentPage - 1));
     nextBtn.addEventListener('click', () => goTo(currentPage + 1));
 
-    // Click on peek pages to navigate
     pages.forEach((page, i) => {
       page.addEventListener('click', (e) => {
         if (i !== currentPage) {
@@ -3653,7 +3303,6 @@ footer {
       });
     });
 
-    // Touch swipe support
     let touchStart = null;
     track.addEventListener('touchstart', e => { touchStart = e.touches[0].clientX; }, { passive: true });
     track.addEventListener('touchend', e => {
@@ -3666,7 +3315,6 @@ footer {
       touchStart = null;
     }, { passive: true });
 
-    // Keyboard navigation
     document.addEventListener('keydown', e => {
       const rect = track.getBoundingClientRect();
       if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -3675,7 +3323,6 @@ footer {
       }
     });
 
-    // Recompute on window resize (breakpoints change page width)
     let resizeTimer;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
